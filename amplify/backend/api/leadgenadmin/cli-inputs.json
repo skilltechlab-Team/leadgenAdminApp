@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "leadgenadmin",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "/Users/avikgoon/Documents/Projects/SkillTechLeadGeneration/LeadGenAdmin/amplify/backend/api/leadgenadmin/schema.graphql",
+    "defaultAuthType": {
+      "mode": "AMAZON_COGNITO_USER_POOLS",
+      "cognitoUserPoolId": "authleadgenadmin63e2af6c"
+    },
+    "conflictResolution": {
+      "defaultResolutionStrategy": {
+        "type": "AUTOMERGE"
+      }
+    },
+    "additionalAuthTypes": [
+      {
+        "mode": "API_KEY",
+        "expirationTime": 365,
+        "apiKeyExpirationDate": "2023-01-14T07:40:29.071Z",
+        "keyDescription": "leadgenDBModel"
+      }
+    ]
+  }
+}

@@ -1,0 +1,93 @@
+type ExecutiveMaster
+  @model
+  @auth(
+    rules: [
+      { allow: owner }
+      { allow: private, operations: [read, create, delete, update] }
+    ]
+  ) {
+  id: ID!
+  name: String
+  phone: String
+  email: String
+  imageURI: String
+  filename: String
+  status: String
+  username: String
+  gender: String
+}
+
+type PaymentMaster
+  @model
+  @auth(
+    rules: [
+      { allow: owner }
+      { allow: private, operations: [read, create, delete, update] }
+    ]
+  ) {
+  id: ID!
+  status: String
+  lead_ID: String
+}
+
+type VendorMaster
+  @model
+  @auth(
+    rules: [
+      { allow: owner }
+      { allow: private, operations: [read, create, delete, update] }
+    ]
+  ) {
+  id: ID!
+  vendor_Name: String
+  vendor_Code: String
+}
+
+type ExamStatus
+  @model
+  @auth(
+    rules: [
+      { allow: owner }
+      { allow: private, operations: [read, create, delete, update] }
+    ]
+  ) {
+  id: ID!
+  lead_Id: String
+  status: String
+  examID: String
+}
+
+type ExamMaster
+  @model
+  @auth(
+    rules: [
+      { allow: owner }
+      { allow: private, operations: [read, create, delete, update] }
+    ]
+  ) {
+  id: ID!
+  exam_name: String
+  exam_code: String
+}
+
+type LeadMaster
+  @model
+  @auth(
+    rules: [
+      { allow: owner }
+      { allow: private, operations: [read, create, delete, update] }
+    ]
+  ) {
+  id: ID!
+  name: String
+  email: String
+  country_code: String
+  phone: String
+  exam_Id: String
+  vendor_Id: String
+  payment_id: String
+  trainer_charges: String
+  net_profit: String
+  total_fees: String
+  executiveID: String
+}

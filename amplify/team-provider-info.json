@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-leadgenadmin-dev-121832-authRole",
+      "UnauthRoleArn": "arn:aws:iam::925935261349:role/amplify-leadgenadmin-dev-121832-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::925935261349:role/amplify-leadgenadmin-dev-121832-authRole",
+      "Region": "ap-southeast-1",
+      "DeploymentBucketName": "amplify-leadgenadmin-dev-121832-deployment",
+      "UnauthRoleName": "amplify-leadgenadmin-dev-121832-unauthRole",
+      "StackName": "amplify-leadgenadmin-dev-121832",
+      "StackId": "arn:aws:cloudformation:ap-southeast-1:925935261349:stack/amplify-leadgenadmin-dev-121832/d619af30-743c-11ec-9331-0240db8f8746",
+      "AmplifyAppId": "d39qf7lludgyiw"
+    },
+    "categories": {
+      "auth": {
+        "leadgenadmin63e2af6c": {}
+      }
+    }
+  }
+}
