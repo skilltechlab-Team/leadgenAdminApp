@@ -1,13 +1,15 @@
-import React from 'react';
-import { Box, HStack, Text, VStack, Icon } from 'native-base';
+import React, { useState } from 'react';
+import { Box, HStack, Text, VStack, Icon, ScrollView } from 'native-base';
 import { MaterialIcons, FontAwesome, Fontisto } from "@expo/vector-icons"
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import Exam from './ReportScreen/Exam';
 const Report = () => {
+    const [visibleView, setVisibleView] = useState('exam');
     return (
         <Box flex={1} bg={'light.100'} >
-            <Box px={3} w={'100%'} my={3}>
+            <Box px={3} w={'100%'} my={3}  >
                 <HStack justifyContent={'space-around'} >
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => setVisibleView('exam')} >
                         <VStack>
                             <Box h={100} w={100} borderWidth={1} borderColor={'rose.400'} bg={'indigo.500'} borderRadius={5} style={{ elevation: 25 }} justifyContent={'center'} alignItems={'center'} >
                                 <Icon
@@ -20,7 +22,7 @@ const Report = () => {
                         </VStack>
                     </TouchableOpacity>
                     <VStack>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => setVisibleView('vendor')}>
                             <VStack>
                                 <Box h={100} w={100} borderWidth={1} borderColor={'rose.400'} bg={'cyan.700'} borderRadius={5} style={{ elevation: 25 }} justifyContent={'center'} alignItems={'center'} >
                                     <Icon
@@ -34,7 +36,7 @@ const Report = () => {
                         </TouchableOpacity>
                     </VStack>
                     <VStack>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => setVisibleView('day')} >
                             <VStack>
                                 <Box h={100} w={100} borderWidth={1} borderColor={'rose.400'} bg={'rose.500'} borderRadius={5} style={{ elevation: 25 }} justifyContent={'center'} alignItems={'center'} >
                                     <Icon
@@ -49,6 +51,12 @@ const Report = () => {
                     </VStack>
                 </HStack>
             </Box>
+            {/*  Display area starts below   */}
+            <ScrollView flexGrow={1} >
+                {
+                    visibleView === 'exam' && <Exam />
+                }
+            </ScrollView>
         </Box>
     );
 }

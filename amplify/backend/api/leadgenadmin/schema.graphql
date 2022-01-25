@@ -3,7 +3,17 @@ type ExecutiveMaster
   @auth(
     rules: [
       { allow: owner }
-      { allow: private, operations: [read, create, delete, update] }
+      { allow: public, provider: apiKey, operations: [create, update, read] }
+      {
+        allow: private
+        provider: userPools
+        operations: [read, create, update, delete]
+      }
+      {
+        allow: groups
+        groups: ["admin"]
+        operations: [read, create, update, delete]
+      }
     ]
   ) {
   id: ID!
@@ -22,12 +32,23 @@ type PaymentMaster
   @auth(
     rules: [
       { allow: owner }
-      { allow: private, operations: [read, create, delete, update] }
+      { allow: public, provider: apiKey, operations: [create, update, read] }
+      {
+        allow: private
+        provider: userPools
+        operations: [read, create, update, delete]
+      }
+      {
+        allow: groups
+        groups: ["admin"]
+        operations: [read, create, update, delete]
+      }
     ]
   ) {
   id: ID!
   status: String
-  lead_ID: String
+  leadMasterID: String!
+  confirmation_number: String
 }
 
 type VendorMaster
@@ -35,7 +56,17 @@ type VendorMaster
   @auth(
     rules: [
       { allow: owner }
-      { allow: private, operations: [read, create, delete, update] }
+      { allow: public, provider: apiKey, operations: [create, update, read] }
+      {
+        allow: private
+        provider: userPools
+        operations: [read, create, update, delete]
+      }
+      {
+        allow: groups
+        groups: ["admin"]
+        operations: [read, create, update, delete]
+      }
     ]
   ) {
   id: ID!
@@ -48,13 +79,25 @@ type ExamStatus
   @auth(
     rules: [
       { allow: owner }
-      { allow: private, operations: [read, create, delete, update] }
+      { allow: public, provider: apiKey, operations: [create, update, read] }
+      {
+        allow: private
+        provider: userPools
+        operations: [read, create, update, delete]
+      }
+      {
+        allow: groups
+        groups: ["admin"]
+        operations: [read, create, update, delete]
+      }
     ]
   ) {
   id: ID!
-  lead_Id: String
+  leadMasterID: String!
   status: String
   examID: String
+  proposedDate: String
+  proposedTime: String
 }
 
 type ExamMaster
@@ -62,7 +105,17 @@ type ExamMaster
   @auth(
     rules: [
       { allow: owner }
-      { allow: private, operations: [read, create, delete, update] }
+      { allow: public, provider: apiKey, operations: [create, update, read] }
+      {
+        allow: private
+        provider: userPools
+        operations: [read, create, update, delete]
+      }
+      {
+        allow: groups
+        groups: ["admin"]
+        operations: [read, create, update, delete]
+      }
     ]
   ) {
   id: ID!
@@ -75,7 +128,17 @@ type LeadMaster
   @auth(
     rules: [
       { allow: owner }
-      { allow: private, operations: [read, create, delete, update] }
+      { allow: public, provider: apiKey, operations: [create, update, read] }
+      {
+        allow: private
+        provider: userPools
+        operations: [read, create, update, delete]
+      }
+      {
+        allow: groups
+        groups: ["admin"]
+        operations: [read, create, update, delete]
+      }
     ]
   ) {
   id: ID!
@@ -90,4 +153,8 @@ type LeadMaster
   net_profit: String
   total_fees: String
   executiveID: String
+  payment: String
+  proposedDate: String
+  proposedTime: String
+  confirmation_number: String
 }

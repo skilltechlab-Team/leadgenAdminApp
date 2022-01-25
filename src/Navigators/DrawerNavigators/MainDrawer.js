@@ -76,7 +76,7 @@ export default function DrawerRoutes() {
                     </Text>
                 ),
             }} />
-            {/*
+
             <Drawer.Screen name="Report" component={Report} options={{
                 title: "Report",
                 drawerIcon: ({ focused, size }) => (
@@ -88,7 +88,7 @@ export default function DrawerRoutes() {
                     </Text>
                 ),
             }} />
-        */}
+
 
         </Drawer.Navigator >
     );

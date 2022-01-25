@@ -1,0 +1,52 @@
+diff --git a/node_modules/react-native-datatable-component/src/DataTable.js b/node_modules/react-native-datatable-component/src/DataTable.js
+index efbc748..a993e97 100644
+--- a/node_modules/react-native-datatable-component/src/DataTable.js
++++ b/node_modules/react-native-datatable-component/src/DataTable.js
+@@ -68,13 +68,13 @@ class DataTable extends React.Component {
+     handleOnRowSelect = (isChecked, id, colName) => {
+         const data = this.state.data.map(row => {
+             if (row.id != id) return row;
+-            if ('onRowSelect' in this.props) this.props?.onRowSelect({...row, [colName]: isChecked}) // Sending props
+-            return {...row, [colName]: isChecked} 
++            if ('onRowSelect' in this.props) this.props?.onRowSelect({ ...row, [colName]: isChecked }) // Sending props
++            return { ...row, [colName]: isChecked }
+         })
+ 
+         const displayData = this.state.displayData.map(row => {
+             if (row.id != id) return row;
+-            return {...row, [colName]: isChecked} 
++            return { ...row, [colName]: isChecked }
+         })
+ 
+         this.setState({
+@@ -114,10 +114,10 @@ class DataTable extends React.Component {
+         let data = props?.data
+         let colNames = props?.colNames;
+ 
+-        if (typeof(data) != 'object') {
++        if (typeof (data) != 'object') {
+             data = [];
+         }
+-        if (typeof(colNames) != 'object') {
++        if (typeof (colNames) != 'object') {
+             colNames = ['No Columns'];
+         }
+ 
+@@ -144,7 +144,7 @@ class DataTable extends React.Component {
+ 
+         // const modifiedData = [...data];
+         const modifiedData = data.map((row, index) => {
+-            if (!row.id) return {...row, id: index}
++            if (!row.id) return { ...row, id: index }
+             return row;
+         })
+         // console.log(modifiedData)
+@@ -165,7 +165,7 @@ class DataTable extends React.Component {
+     render() {
+ 
+         return (
+-            <View style={styles.componentContainer}
++            <View style={{ ...styles.componentContainer, backgroundColor: this.props.tableBackgroundColor, }}
+                 onLayout={e => {
+                     this.setState({ widthOfContainer: e.nativeEvent.layout.width })
+                 }}>

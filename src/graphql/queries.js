@@ -249,7 +249,6 @@ export const listExamStatuses = /* GraphQL */ `
     listExamStatuses(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        lead_Id
         status
         examID
         createdAt
