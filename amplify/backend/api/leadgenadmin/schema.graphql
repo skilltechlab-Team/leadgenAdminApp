@@ -49,6 +49,11 @@ type PaymentMaster
   status: String
   leadMasterID: String!
   confirmation_number: String
+  paid_amount: String
+  due_amount: String
+  trainer_charges: String
+  net_profit: String
+  total_fees: String
 }
 
 type VendorMaster

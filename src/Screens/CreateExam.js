@@ -57,9 +57,10 @@ const CreateExam = () => {
                     </Box>
                 </Box>
                 <Box>
-                    <Box pl={2}>
+                    <Box pl={2} pb={10} h={"70%"} >
                         <ExamCardView examDetails={examListsData} fetchExamList={fetchExamList} setStatus={setStatus} />
                     </Box>
+
                 </Box>
             </Box> :
             <>

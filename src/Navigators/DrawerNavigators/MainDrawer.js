@@ -8,7 +8,7 @@ import ViewExecutive from "../../Screens/ViewExecutive";
 import CreateExam from "../../Screens/CreateExam";
 import Report from "../../Screens/Report";
 import Vendor from "../../Screens/Vendor";
-
+import About from '../../Screens/About';
 const Drawer = createDrawerNavigator();
 
 export default function DrawerRoutes() {
@@ -85,6 +85,18 @@ export default function DrawerRoutes() {
                 drawerLabel: ({ focused }) => (
                     <Text color={focused ? "#3e3d70" : "#3e3d70"}  >
                         Report
+                    </Text>
+                ),
+            }} />
+
+            <Drawer.Screen name="About" component={About} options={{
+                title: "About",
+                drawerIcon: ({ focused, size }) => (
+                    <Icon name="info" size={size} color={focused ? "#3e3d70" : "#3e3d70"} />
+                ),
+                drawerLabel: ({ focused }) => (
+                    <Text color={focused ? "#3e3d70" : "#3e3d70"}  >
+                        About
                     </Text>
                 ),
             }} />

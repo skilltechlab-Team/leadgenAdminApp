@@ -115,7 +115,13 @@ export const listPaymentMasters = /* GraphQL */ `
       items {
         id
         status
-        lead_ID
+        leadMasterID
+        confirmation_number
+        paid_amount
+        due_amount
+        trainer_charges
+        net_profit
+        total_fees
         createdAt
         updatedAt
         _version

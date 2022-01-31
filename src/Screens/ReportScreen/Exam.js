@@ -1,21 +1,16 @@
 import React, { useEffect, useCallback, useState } from 'react';
-import { Box, Heading, ScrollView, Text } from 'native-base';
+import { Box, ScrollView } from 'native-base';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchLeadDetails, fetchExamDetails } from '../../../controller/createExamRecord'
 import DataTable, { COL_TYPES } from 'react-native-datatable-component';
 import fetchAllExam from '../../../controller/fetchAllExam';
 import { createExamList } from '../../../store/reducers/examList';
-import date from 'date-and-time';
 import { Dimensions } from "react-native";
 const screenWidth = Dimensions.get("window").width;
 import {
-    LineChart,
-    BarChart,
-    PieChart,
-    ProgressChart,
-    ContributionGraph,
-    StackedBarChart
+    BarChart
 } from "react-native-chart-kit";
+import { createLeadList } from '../../../store/reducers/leadList';
 const Exam = () => {
     useEffect(() => {
         addLeadDetails();
@@ -25,14 +20,15 @@ const Exam = () => {
 
     const examDetails = useSelector(state => state.exams.examList);
     const examListsData = examDetails.filter((exam) => exam._deleted !== true)
+    const leadDetails = useSelector(state => state.leads.leadList);
     const dispatch = useDispatch();
-    const [leadDetails, setLeadDetails] = useState([]);
+    // const [leadDetails, setLeadDetails] = useState([]);
     const [examStatus, setExamStatus] = useState([]);
     const [examData, setExamData] = useState([]);
 
     const addLeadDetails = useCallback(async () => {
         const getLeadDetails = await fetchLeadDetails();
-        setLeadDetails([...getLeadDetails]);
+        dispatch(createLeadList([...getLeadDetails]));
     }, [leadDetails])
     const fetchExamList = useCallback(async () => {
         const examList = await fetchAllExam()
@@ -108,8 +104,8 @@ const Exam = () => {
                 noOfPages={2} //number
                 tableBackgroundColor="#f5f5f4"
             />
-            <Box w={"100%"} my={5} >
-                <Box px={5} >
+            <Box w={"100%"} my={5}>
+                <Box px={5}>
                     <BarChart
                         style={{
                             marginVertical: 8,
@@ -121,7 +117,7 @@ const Exam = () => {
                         width={screenWidth}
                         height={400}
                         chartConfig={chartConfig}
-                        verticalLabelRotation={30}
+                        verticalLabelRotation={40}
                         fromZero={true}
                         showBarTops={true}
                     />
@@ -131,7 +127,7 @@ const Exam = () => {
         </ScrollView>
     );
 }
-export default Exam;
+export default React.memo(Exam);
 
 
 function findOcc(arr, key) {

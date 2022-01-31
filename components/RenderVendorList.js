@@ -11,7 +11,7 @@ const RenderVendorList = ({ item, fetchVendorList, setStatus }) => {
         <>
             <HStack justifyContent={'space-around'} borderBottomWidth={1 / 2} borderBottomColor={'muted.400'} py={2} >
                 <VStack w={'40%'} alignItems={'center'} justifyContent={'center'} >
-                    <Heading fontWeight={'medium'} size={'sm'}>{item.vendor_Name}</Heading>
+                    <Heading fontWeight={'medium'} textAlign={'center'} size={'sm'}>{item.vendor_Name}</Heading>
                 </VStack>
                 <VStack w={'40%'} alignItems={'center'} justifyContent={'center'} >
                     <Heading fontWeight={'medium'} textAlign={'center'} size={'sm'}>{item.vendor_Code}</Heading>

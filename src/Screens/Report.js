@@ -3,6 +3,8 @@ import { Box, HStack, Text, VStack, Icon, ScrollView } from 'native-base';
 import { MaterialIcons, FontAwesome, Fontisto } from "@expo/vector-icons"
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Exam from './ReportScreen/Exam';
+import Vendor from './ReportScreen/Vendor';
+import Day from './ReportScreen/Day';
 const Report = () => {
     const [visibleView, setVisibleView] = useState('exam');
     return (
@@ -55,6 +57,12 @@ const Report = () => {
             <ScrollView flexGrow={1} >
                 {
                     visibleView === 'exam' && <Exam />
+                }
+                {
+                    visibleView === 'vendor' && <Vendor />
+                }
+                {
+                    visibleView === 'day' && <Day />
                 }
             </ScrollView>
         </Box>

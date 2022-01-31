@@ -11,7 +11,7 @@ const RenderExamList = ({ item, fetchExamList, setStatus }) => {
         <>
             <HStack justifyContent={'space-around'} borderBottomWidth={1 / 2} borderBottomColor={'muted.400'} py={2} >
                 <VStack w={'40%'} alignItems={'center'} justifyContent={'center'} >
-                    <Heading fontWeight={'medium'} size={'sm'}>{item.exam_name}</Heading>
+                    <Heading fontWeight={'medium'} textAlign={'center'} size={'sm'}>{item.exam_name}</Heading>
                 </VStack>
                 <VStack w={'40%'} alignItems={'center'} justifyContent={'center'} >
                     <Heading fontWeight={'medium'} textAlign={'center'} size={'sm'}>{item.exam_code}</Heading>

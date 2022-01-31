@@ -9,18 +9,16 @@ import AlertCreator from '../../components/AlertCreator';
 import VendorInput from '../../components/VendorInput';
 import { MaterialIcons } from "@expo/vector-icons"
 import VendorCardView from '../../components/VendorCardView';
+import fetchVendorListFromDB from '../../controller/fetchVendorListFromDB';
 const Vendor = () => {
     const vendorsData = useSelector(state => state.vendors.vendorList);
     const vendors = vendorsData.filter((v) => v._deleted !== true)
     const [status, setStatus] = useState({});
     const dispatch = useDispatch();
     useEffect(() => {
-        fetchVendorList()
+        fetchVendorListFromDB(dispatch)
     }, [])
-    const fetchVendorList = async () => {
-        const vendorList = await fetchVendor()
-        dispatch(createVendorList(vendorList))
-    }
+
     return (
         vendors.length === 0 ?
             <Box flex={1} bg={"light.200"} justifyContent={'center'} >
@@ -63,7 +61,7 @@ const Vendor = () => {
                     </Box>
                 </Box>
                 <Box>
-                    <Box pl={2}>
+                    <Box pl={2} h={"70%"} >
                         <VendorCardView vendors={vendors} fetchVendorList={fetchVendorList} setStatus={setStatus} />
                     </Box>
                 </Box>
