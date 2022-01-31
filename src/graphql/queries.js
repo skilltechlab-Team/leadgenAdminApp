@@ -259,6 +259,9 @@ export const listExamStatuses = /* GraphQL */ `
         examID
         createdAt
         updatedAt
+        proposedDate
+        proposedTime
+        leadMasterID
         _version
         _deleted
         _lastChangedAt

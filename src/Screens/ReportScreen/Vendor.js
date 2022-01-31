@@ -106,7 +106,7 @@ const Vendor = () => {
             });
             await Sharing.shareAsync(uri, {
                 mimeType: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-                dialogTitle: 'MyWater data',
+                dialogTitle: 'Vendor details',
                 UTI: 'com.microsoft.excel.xlsx'
             });
         } catch (error) {
