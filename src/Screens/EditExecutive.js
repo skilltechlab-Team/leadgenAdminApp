@@ -29,7 +29,7 @@ const EditExecutive = ({ route, navigation }) => {
         setIsUploading(true)
         const { id, gender, name, email, phone } = executiveData;
         const execOBJ = { id, gender, name, email, phone, _version: executive._version }
-        console.log(execOBJ);
+
         try {
             const updateStatus = await API.graphql({ query: mutations.updateExecutiveMaster, variables: { input: execOBJ } });
 
@@ -73,6 +73,8 @@ const EditExecutive = ({ route, navigation }) => {
                     btnText="UPDATE EXECUTIVE"
                     isDisabled={true}
                     submitFN={updateUser}
+                    version={executive._version}
+                    navigation={navigation}
                 />
             </Box>
         </ScrollView>

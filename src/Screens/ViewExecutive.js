@@ -24,7 +24,8 @@ const ViewExecutive = ({ navigation }) => {
         setIsLoading(false)
         setRefresh(false)
     }
-    const listOfExecutives = useSelector((state) => state.executives.executivelist)
+    let listOfExecutives = useSelector((state) => state.executives.executivelist)
+    listOfExecutives = listOfExecutives.filter((ex) => ex.status === "active");
     return (
         !isLoading ?
             <Box flex={1} >

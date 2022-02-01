@@ -1,14 +1,29 @@
 import React from 'react';
-import { Input, Icon, Text, CheckIcon, Button, Box, ScrollView, Image, VStack, Select, Pressable } from 'native-base';
+import { Input, Icon, Text, CheckIcon, Button, Box, ScrollView, Image, VStack, Select, Pressable, HStack } from 'native-base';
 import { MaterialIcons } from "@expo/vector-icons"
-import { Dimensions } from 'react-native';
+import { Alert, Dimensions } from 'react-native';
 import Girl from './Girl'
 import Boy from './Boy';
 import LoadingButton from './LoadingButton';
 import SubmitButton from './SubmitButton';
-const ExecutiveInput = ({ executiveData, setExecutiveData, isUploading, submitFN, btnText = "ADD EXECUTIVE", isDisabled = false }) => {
+import { disableExecutive } from '../controller/fetchExecutive';
+const ExecutiveInput = ({ executiveData, setExecutiveData, isUploading, submitFN, btnText = "ADD EXECUTIVE", isDisabled = false, version = 0, navigation = {} }) => {
     const [show, setShow] = React.useState(false)
     const handleClick = () => setShow(!show)
+    const onDisablePress = async () => {
+        console.log(executiveData);
+        const data = {
+            id: executiveData.id,
+            _version: version,
+            status: 'inactive'
+        }
+        const statusCode = await disableExecutive(data);
+        if (statusCode) {
+            navigation.goBack()
+        } else {
+            Alert.alert("User not disabled, Err: 502");
+        }
+    }
     return (
         <Box h={Dimensions.get('window').height - 90} justifyContent={'center'} alignItems={'center'} >
             <VStack my={5} ml={-2} >
@@ -191,6 +206,9 @@ const ExecutiveInput = ({ executiveData, setExecutiveData, isUploading, submitFN
                 <SubmitButton btnText={btnText} onSubmit={submitFN} />
                 :
                 <LoadingButton />
+            }
+            {
+                isDisabled && <HStack w={'100%'} alignItems={'center'} justifyContent={'center'} my={5} ><Button onPress={onDisablePress} colorScheme="secondary" variant={'outline'} w={'50%'} >Disable Executive</Button></HStack>
             }
         </Box>
     );
