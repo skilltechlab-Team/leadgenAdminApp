@@ -11,7 +11,7 @@ import * as mutations from '../graphql/mutations';
 import { createExecutiveList } from '../../store/reducers/ListOfExecutives';
 const EditExecutive = ({ route, navigation }) => {
     const { executive } = route.params;
-    console.log(executive);
+
     let obj = {
         "id": executive.id,
         "email": executive.email,

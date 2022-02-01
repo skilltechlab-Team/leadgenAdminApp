@@ -11,7 +11,7 @@ const ExecutiveInput = ({ executiveData, setExecutiveData, isUploading, submitFN
     const [show, setShow] = React.useState(false)
     const handleClick = () => setShow(!show)
     const onDisablePress = async () => {
-        console.log(executiveData);
+
         const data = {
             id: executiveData.id,
             _version: version,
